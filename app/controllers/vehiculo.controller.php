@@ -1,19 +1,22 @@
 <?php
 include_once 'app/Models/vehiculos.model.php';
 include_once 'app/views/vehiculos.view.php';
+include_once 'app/views/error.view.php';
 
 class VehiculoControllers{
 
     private $modelVehiculos;
     private $viewVehiculos;
+    private $viewError;
+
 
     function __construct(){
         $this->modelVehiculos = new Vehiculos();
-       // $this->viewVehiculos        $this->view = new TaskView($res->user);
        $this->viewVehiculos = new viewVehiculos();
+       $this->viewError = new Error();
     }
     
-    
+    // MUESTRA LA LISTA DE VEHICULOS QUE SE ENCUENTRA EN LA TABLA VEHICULOS
     function showCatalogo(){
        // $vehiculos = $this->modelVehiculos->getAllCars();
        //echo "show ";
@@ -21,10 +24,14 @@ class VehiculoControllers{
        $this->viewVehiculos->showVehiculos($vehiculos);
     }
 
+    //MUESTRA EL DETALLE DEL VEHICULO REQUERIDO SEGUN ID
     function showDetalles($id){
         //echo "$id"; 
         $vehiculo = $this->modelVehiculos->getCarById($id);
-        $this->viewVehiculos->showCarDetails($vehiculo);
+        if($vehiculo)
+            return $this->viewVehiculos->showCarDetails($vehiculo);
+        return $this->viewError->showError("No existe un vehiculo con id = $id");
+
     }
 
     function showVehiculosByModelo(){
