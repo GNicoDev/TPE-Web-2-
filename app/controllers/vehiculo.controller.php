@@ -27,4 +27,15 @@ class VehiculoControllers{
         $this->viewVehiculos->showCarDetails($vehiculo);
     }
 
+    function showVehiculosByModelo(){
+        if (!isset($_GET['select-modelos']))
+            echo 'Modelo de auto inexistente';
+        else  {
+            $year = $_GET['select-modelos'];
+            $vehiculos = $this->modelVehiculos->getCarsByYear($year);
+            $this->viewVehiculos->showVehiculos($vehiculos);
+        }
+
+    }
+
 }

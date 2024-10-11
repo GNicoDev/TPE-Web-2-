@@ -1,19 +1,12 @@
 <?php
 
-class HomeView {
+class HomeView
+{
 
-    function showHome(){
-        require 'templates/header.phtml';
-
-        
-       ?>
-       <section class="btns-index">
-       <ul>
-           <a href=""><li>Ver ofertas</li></a>
-           <a href=""><li>Sign-in</li></a>
-       </ul>
-   </section>
-
-        <?php require 'templates/footer.phtml';
+    function showHome()
+    {
+        require 'templates/layout/header.phtml';
+        require 'templates/layout/buttonsHome.phtml';
+        require 'templates/layout/footer.phtml';
     }
 }

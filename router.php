@@ -32,7 +32,12 @@ switch ($params[0]) {
             $vehiculoController->showDetalles($params[1]);
             break;
         }
-
+        case "modelos": {
+            //var_dump($_GET);
+            $vehiculoController = new VehiculoControllers();
+            $vehiculoController->showVehiculosByModelo();
+            break;
+        }
     default: {
             header("HTTP/1.0 404 Not Found");
             break;

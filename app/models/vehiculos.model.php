@@ -50,9 +50,8 @@ class Vehiculos
     function getCarsByYear($year)
     {
         try {
-            $db = $this->getConection();
 
-            $query = $db->prepare('SELECT * FROM vehiculos WHERE modelo = ?');
+            $query = $this->db->prepare('SELECT * FROM vehiculos WHERE modelo = ?');
             $query->execute([$year]);
 
             $cars = $query->fetchAll(PDO::FETCH_OBJ);
