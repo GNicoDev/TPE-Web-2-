@@ -3,19 +3,21 @@ class viewVehiculos
 {
 
     // Muestra el listado de los vehiculos
-    public function showVehiculos($vehiculos)
+    public function showVehiculos($vehiculos,$user)
     {
+        $usuario = $user;
         require_once 'templates/layout/header.phtml';
-        require 'templates/catalogo.phtml';
+        require_once 'templates/catalogo.phtml';
         require_once 'templates/layout/footer.phtml';
     }
 
     //Muestra el detalle del vehiculo seleccionado
-    function showCarDetails($vehiculo)
+    function showCarDetails($vehiculo, $user)
     { {
-            require_once 'templates/layout/header.phtml';
-            require 'templates/detallesVehiculos.phtml';
-            require_once 'templates/layout/footer.phtml';
+        $usuario = $user;
+        require_once 'templates/layout/header.phtml';
+        require_once 'templates/detallesVehiculos.phtml';
+         require_once 'templates/layout/footer.phtml';
         }
     }
 

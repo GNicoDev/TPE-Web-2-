@@ -12,6 +12,7 @@
 <body>
     <header class="container">
         <a href="index.html"><img class="logo" src="images/logo.png" alt=""></a>
+        <?php if (!$usuario) { ?>
         <nav class="contMenu">
             <img class="iconoMenu" src="images/iconoMenu.png" alt="icono menu">
             <ul class="oculto">
@@ -19,9 +20,19 @@
                 <li><a href="catalogo">Catalogo</a></li>
                 <li><a href="">Servicios</a></li>
                 <li><a href="">Contactos</a></li>
-                <!--<li><a id="">Modo oscuro</a></li> -->
             </ul>
         </nav>
+        <?php } else { ?>
+            <nav class="contMenu">
+            <img class="iconoMenu" src="images/iconoMenu.png" alt="icono menu">
+            <p>Sesion iniciada por: </p><h4><?php if($usuario) echo "$usuario->email" ?></h4>
+            <ul class="oculto">
+                <li><a href="">Inicio</a></li>
+                <li><a href="catalogo">Catalogo</a></li>
+                <li><a href="logout">logout</a></li> 
+            </ul>
+        </nav>
+                <?php } ?>
         <h1>Luxor Rent Car</h1>
         <p class="leyenda"> Vivi una experiencia increible con nuestra gama de autos de lujo.
             <br><br>¡Te llevamos más allá del destino!.

@@ -1,6 +1,9 @@
 <section class="btns-index">
+    if
        <ul>
-           <a href=""><li>Ver ofertas</li></a>
-           <a href="sign-in"><li>Sign-in</li></a>
+       <?php if (!$usuario) { ?>
+            <a href=""><li>Ver ofertas</li></a>
+            <a href="sign-in"><li>Sign-in</li></a>
+        <?php } ?>
        </ul>
    </section>
