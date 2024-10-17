@@ -1,6 +1,7 @@
 <?php
 include_once 'app/controllers/vehiculo.controller.php';
 include_once 'app/controllers/home.controller.php';
+include_once 'app/controllers/auth.controller.php';
 
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -36,6 +37,11 @@ switch ($params[0]) {
             //var_dump($_GET);
             $vehiculoController = new VehiculoControllers();
             $vehiculoController->showVehiculosByModelo();
+            break;
+        }
+        case "sign-in": {
+            $controller = new AuthController();
+            $controller->showSignIn();
             break;
         }
     default: {
