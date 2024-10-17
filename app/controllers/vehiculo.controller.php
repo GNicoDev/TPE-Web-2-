@@ -1,19 +1,19 @@
 <?php
 include_once 'app/Models/vehiculos.model.php';
 include_once 'app/views/vehiculos.view.php';
-include_once 'app/views/error.view.php';
+include_once 'app/views/mensaje.view.php';
 
 class VehiculoControllers{
 
     private $modelVehiculos;
     private $viewVehiculos;
-    private $viewError;
+    private $viewMensaje;
 
 
     function __construct(){
         $this->modelVehiculos = new Vehiculos();
        $this->viewVehiculos = new viewVehiculos();
-       $this->viewError = new Error();
+       $this->viewMensaje = new Mensaje();
     }
     
     // MUESTRA LA LISTA DE VEHICULOS QUE SE ENCUENTRA EN LA TABLA VEHICULOS
@@ -30,17 +30,23 @@ class VehiculoControllers{
         $vehiculo = $this->modelVehiculos->getCarById($id);
         if($vehiculo)
             return $this->viewVehiculos->showCarDetails($vehiculo);
-        return $this->viewError->showError("No existe un vehiculo con id = $id");
+        return $this->viewMensaje->showMensaje("No existe un vehiculo con id = $id", "error");
 
     }
 
     function showVehiculosByModelo(){
         if (!isset($_GET['select-modelos']))
-            echo 'Modelo de auto inexistente';
+            $this->viewMensaje->showMensaje('No hay modelos seleccionados!', "error");
         else  {
             $year = $_GET['select-modelos'];
             $vehiculos = $this->modelVehiculos->getCarsByYear($year);
-            $this->viewVehiculos->showVehiculos($vehiculos);
+            if($vehiculos)
+                $this->viewVehiculos->showVehiculos($vehiculos);
+            else{
+                $this->viewMensaje->showMensaje('Modelo de auto inexistente!', "error");
+                //header('Location:'.BASE_URL.'catalogo');
+            }
+
         }
 
     }

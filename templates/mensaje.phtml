@@ -1,0 +1,9 @@
+<section class="contenedorMain">
+    <?php if($this->tipo == 'error') {?>
+        <h2 class="error">Error!</h2>
+        <h3><?php echo $mensaje; ?></h3>
+    <?php } else { ?>
+        <h2>Mensaje!</h2>
+        <h3><?php echo $mensaje; ?></h3>
+    <?php } ?>
+</section>
