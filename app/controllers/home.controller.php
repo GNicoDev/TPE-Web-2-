@@ -15,4 +15,12 @@ class HomeController {
     function showHome(){
         return $this->homeView->showHome($this->user);
     }
+
+    function showServiciosC(){
+        return $this->homeView->showServicios($this->user);
+    }
+
+    function showContactosC(){
+        return $this->homeView->showContactos($this->user);
+    }
 }

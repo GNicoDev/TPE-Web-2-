@@ -63,6 +63,18 @@ switch ($params[0]) {
             $controller->logout();
             break;
         }
+        case "servicios": {
+            sessionAuthMiddleware($res);
+            $homeController = new HomeController($res);
+            $homeController->showServiciosC();
+            break;
+        }
+        case "contactos": {
+            sessionAuthMiddleware($res);
+            $homeController = new HomeController($res);
+            $homeController->showContactosC();
+            break;
+        }
     default: {
             header("HTTP/1.0 404 Not Found");
             break;
