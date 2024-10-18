@@ -1,12 +1,11 @@
 # TPE_WEB2
 Alquiler de vehiculos
 
-## Nombre integrantes:
-BREIJO, MICAELA JAZMÍN \
+## Nombre integrante:
 ALVAREZ, GUILLERMO NICOLAS
 
 ## Breve descripción:
-Esta aplicación web permite a los usuarios alquilar vehículos de manera sencilla
+Esta aplicación web permite a los usuarios alquilar vehículos de manera sencilla. El sitio web es de acceso publico con lo cual todos pueden navegar en el y solo usuarios administradores pueden loguearse para el manejo de la base de datos (CRUD). La intension, a medida que avance el proyecto, es que usuarios comunes tambien puedan loguearse con la posibilidad de alquilar vehiculos.
 
 ## Estructura de la base de datos
 
