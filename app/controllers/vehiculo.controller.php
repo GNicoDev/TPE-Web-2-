@@ -23,7 +23,7 @@ class VehiculoControllers{
        // $vehiculos = $this->modelVehiculos->getAllCars();
        //echo "show ";
        $vehiculos = $this->modelVehiculos->getAllCars();
-       $this->viewVehiculos->showVehiculos($vehiculos,$this->user);
+       $this->viewVehiculos->showVehiculos($vehiculos,null,$this->user);
     }
 
     //MUESTRA EL DETALLE DEL VEHICULO REQUERIDO SEGUN ID
@@ -37,13 +37,13 @@ class VehiculoControllers{
     }
 
     function showVehiculosByModelo(){
-        if (!isset($_GET['select-modelos']))
+        if (!isset($_POST['select-modelos']))
             $this->viewMensaje->showMensaje('No hay modelos seleccionados!', "error",$this->user);
         else  {
-            $year = $_GET['select-modelos'];
+            $year = $_POST['select-modelos'];
             $vehiculos = $this->modelVehiculos->getCarsByYear($year);
             if($vehiculos)
-                $this->viewVehiculos->showVehiculos($vehiculos,$this->user);
+                $this->viewVehiculos->showVehiculos($vehiculos,$year,$this->user);
             else{
                 $this->viewMensaje->showMensaje('Modelo de auto inexistente!', "error",$this->user);
                 //header('Location:'.BASE_URL.'catalogo');

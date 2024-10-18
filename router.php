@@ -40,7 +40,7 @@ switch ($params[0]) {
             break;
         }
         case "modelos": {
-            //var_dump($_GET);
+           // var_dump($_POST);
             sessionAuthMiddleware($res);
             $vehiculoController = new VehiculoControllers($res);
             $vehiculoController->showVehiculosByModelo();
