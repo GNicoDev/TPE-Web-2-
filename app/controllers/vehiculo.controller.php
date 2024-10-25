@@ -53,4 +53,23 @@ class VehiculoControllers{
 
     }
 
+    function showFormAltaController(){
+        $this->viewVehiculos->showFormAlta($this->user);
+    }
+
+    function nuevoVehiculo(){
+        // var_dump($_POST);
+         $marca = $_POST['marca'];
+         $modelo = $_POST['modelo'];
+         $matricula = $_POST['matricula'];
+         $precio = $_POST['precio'];
+         $imagen = $_POST['imagen'];
+         
+         $this->modelVehiculos->insertCar($marca,$modelo,$matricula,$precio,$imagen);
+         header('Location: ' . BASE_URL. 'catalogo');
+ 
+         //$this->viewVehiculos->showError('Insertado con exito')
+     }
+
+
 }

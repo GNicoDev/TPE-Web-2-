@@ -24,6 +24,12 @@ class viewVehiculos
         }
     }
 
+    function showFormAlta($user){
+        $usuario = $user;
+        require_once 'templates/layout/header.phtml';
+        require_once 'templates/form_alta.phtml';
+    }
+
 
     public function showError($error)
     {

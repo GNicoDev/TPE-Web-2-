@@ -75,6 +75,19 @@ switch ($params[0]) {
             $homeController->showContactosC();
             break;
         }
+        case "showFormAlta": {
+            sessionAuthMiddleware($res);
+            $controller = new VehiculoControllers($res);
+            $controller->showFormAltaController();
+            break;
+        }
+        case "insertar": {
+            sessionAuthMiddleware($res);
+            $controller = new VehiculoControllers($res);
+            $controller->nuevoVehiculo();
+            break;
+        }
+        
     default: {
             header("HTTP/1.0 404 Not Found");
             break;

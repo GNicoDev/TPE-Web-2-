@@ -60,6 +60,8 @@ class Vehiculos
             echo "Error. $pe";
         }
     }
+
+
     function deleteCarById($id)
     {
         try {
@@ -68,6 +70,18 @@ class Vehiculos
             $query->execute([$id]);
         } catch (PDOException $pe) {
             echo "Error al eliminar registro en la base de datos. $pe";
+        }
+    }
+
+    function insertCar($marca,$modelo,$matricula,$precio,$imagen){
+        try{
+    
+        $query = $this->db->prepare('INSERT INTO vehiculos(marca,modelo,matricula,precio_dia,imagen) VALUES (?,?,?,?,?)');
+        $query->execute([$marca,$modelo,$matricula,$precio,$imagen]);
+    
+        }
+        catch (PDOException $pe){
+            echo "Error al insertar en la base de datos. $pe";
         }
     }
 /*

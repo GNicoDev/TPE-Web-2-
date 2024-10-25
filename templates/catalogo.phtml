@@ -1,8 +1,9 @@
 <section class="contenedorMain">
-            <?php if(!$year) { ?>
-            <h2>Catalogo </h2>
-            <h4>Seleccionar vehiculos por modelo </h3>
-                <form action="modelos" method="post">
+            <?php if(!$user) { ?>
+                <?php if(!$year) { ?>
+                    <h2>Catalogo </h2>
+                    <h4>Seleccionar vehiculos por modelo </h3>
+                    <form action="modelos" method="post">
                     <select name="select-modelos" id="">
                         <option value="2019">2019</option>
                         <option value="2020">2020</option>
@@ -11,10 +12,14 @@
                         <option value="2023">2023</option>
                     </select>
                     <button type="submit">Mostrar</button>
-                </form>
+                    </form>
                 <?php } else {?>
                     <h2>Vehiculos Modelo <?php echo "$year" ?></h2> 
-                    <?php } ?>
+                <?php } ?>
+            <?php }else { ?>
+                    <h2>Catalogo </h2>
+                    <button type="button" onclick="location.href= 'showFormAlta'"  >Insertar Nuevo Vehiculo</button> 
+                <?php } ?>
                 <br><br>
                 <div class="catalogo">
                     <?php foreach ($vehiculos as $vehiculo) { ?>
