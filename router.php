@@ -93,6 +93,19 @@ switch ($params[0]) {
             $controller->eliminarVehiculo($params[1]);
             break;
         }
+        case "showFormActualizar": {
+            //var_dump($params);
+            sessionAuthMiddleware($res);
+            $controller = new VehiculoControllers($res);
+            $controller->showFormActualizar($params[1]);
+            break;
+        }
+        case "actualizar": {
+            sessionAuthMiddleware($res);
+            $controller = new VehiculoControllers($res);
+            $controller->actualizarVehiculo($params[1]);
+            break;
+        }
     default: {
             header("HTTP/1.0 404 Not Found");
             break;

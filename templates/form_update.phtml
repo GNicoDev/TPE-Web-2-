@@ -1,0 +1,36 @@
+<section class="contenedorMain">
+    <h2>Formulario de actualizacion de Vehiculos</h2>
+    <img src="<?php echo $vehiculo->imagen ?>" alt="" class="img-auto">
+
+    <form action="actualizar/<?php echo "$vehiculo->id" ?>" method="post">
+        <div>
+            <label>Marca: <input type="text" name="marca" value="<?php echo $vehiculo->marca ?>" required></label>
+        </div>
+        <br>
+        <div>
+        <label>Modelo: </label> <select name="modelo">
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label>Matricula: <input type="text" name="matricula" value="<?php echo $vehiculo->matricula ?>" required></label>
+        </div>
+        <br>
+        <div>
+            <label>Precio dia: <input type="text" name="precio" value="<?php echo $vehiculo->precio_dia ?>" required></label>
+        </div>
+        <br>
+        <div>
+            <label>Imagen (url): <input type="text" name="imagen" value="<?php echo $vehiculo->imagen ?>" required></label>
+        </div>
+        <br>
+        <div>
+            <button type="submit">Actualizar</button>
+        </div>
+    </form>
+</section>

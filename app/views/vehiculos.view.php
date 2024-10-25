@@ -30,9 +30,10 @@ class viewVehiculos
         require_once 'templates/form_alta.phtml';
     }
 
-
-    public function showError($error)
-    {
-        require 'templates/error.phtml';
+    function showFormUpdate($car,$user){
+        $usuario=$user;
+        $vehiculo=$car;
+        require_once 'templates/layout/header.phtml';
+        require_once 'templates/form_update.phtml';
     }
 }

@@ -5,7 +5,8 @@ class Vehiculos
 {
     private $db;
 
-    function __construct(){
+    function __construct()
+    {
         $this->db = $this->getConection();
     }
 
@@ -64,37 +65,24 @@ class Vehiculos
 
     function deleteCarById($id)
     {
-        try {
 
-            $query = $this->db->prepare('DELETE FROM vehiculos WHERE id = ?');
-            $query->execute([$id]);
-        } catch (PDOException $pe) {
-            echo "Error al eliminar registro en la base de datos. $pe";
-        }
+        $query = $this->db->prepare('DELETE FROM vehiculos WHERE id = ?');
+        $query->execute([$id]);
     }
 
-    function insertCar($marca,$modelo,$matricula,$precio,$imagen){
-        try{
-    
+    function insertCar($marca, $modelo, $matricula, $precio, $imagen)
+    {
+
         $query = $this->db->prepare('INSERT INTO vehiculos(marca,modelo,matricula,precio_dia,imagen) VALUES (?,?,?,?,?)');
-        $query->execute([$marca,$modelo,$matricula,$precio,$imagen]);
-    
-        }
-        catch (PDOException $pe){
-            echo "Error al insertar en la base de datos. $pe";
-        }
+        $query->execute([$marca, $modelo, $matricula, $precio, $imagen]);
     }
-/*
-    function insertTask($car){
-        try{
-    
-        $query = $this->db->prepare('INSERT INTO vehiculos(marca,modelo,matricula,precio_dia) VALUES (?,?,?)');
-        $query->execute([$car->marca,$car->modelo,$car->matricula,$car->precio_dia]);
-    
-        }
-        catch (PDOException $pe){
-            echo "Error al insertar en la base de datos";
-        }
+
+    function updateCar($id, $marca, $modelo, $matricula, $precio, $imagen)
+    {
+
+        $query = $this->db->prepare("UPDATE vehiculos SET  marca = ?, modelo = ?, matricula = ?, precio_dia = ?, imagen = ? WHERE vehiculos.id = ?");
+        $query->execute([$marca, $modelo, $matricula, $precio, $imagen, $id]);
+        $vehiculo = $this->getCarById($id);
+        return $vehiculo;
     }
-        */
 }

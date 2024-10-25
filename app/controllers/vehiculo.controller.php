@@ -3,82 +3,110 @@ include_once 'app/Models/vehiculos.model.php';
 include_once 'app/views/vehiculos.view.php';
 include_once 'app/views/mensaje.view.php';
 
-class VehiculoControllers{
+class VehiculoControllers
+{
 
     private $modelVehiculos;
     private $viewVehiculos;
     private $viewMensaje;
-    private $user=null;
+    private $user = null;
 
 
-    function __construct($res){
+    function __construct($res)
+    {
         $this->modelVehiculos = new Vehiculos();
-       $this->viewVehiculos = new viewVehiculos();
-       $this->viewMensaje = new Mensaje();
-       $this->user = $res->user;
+        $this->viewVehiculos = new viewVehiculos();
+        $this->viewMensaje = new Mensaje();
+        $this->user = $res->user;
     }
-    
+
     // MUESTRA LA LISTA DE VEHICULOS QUE SE ENCUENTRA EN LA TABLA VEHICULOS
-    function showCatalogo(){
-       // $vehiculos = $this->modelVehiculos->getAllCars();
-       //echo "show ";
-       $vehiculos = $this->modelVehiculos->getAllCars();
-       $this->viewVehiculos->showVehiculos($vehiculos,null,$this->user);
+    function showCatalogo()
+    {
+        // $vehiculos = $this->modelVehiculos->getAllCars();
+        //echo "show ";
+        $vehiculos = $this->modelVehiculos->getAllCars();
+        $this->viewVehiculos->showVehiculos($vehiculos, null, $this->user);
     }
 
     //MUESTRA EL DETALLE DEL VEHICULO REQUERIDO SEGUN ID
-    function showDetalles($id){
+    function showDetalles($id)
+    {
         //echo "$id"; 
         $vehiculo = $this->modelVehiculos->getCarById($id);
-        if($vehiculo)
-            return $this->viewVehiculos->showCarDetails($vehiculo,$this->user);
-        return $this->viewMensaje->showMensaje("No existe un vehiculo con id = $id", "error",$this->user);
-
+        if ($vehiculo)
+            return $this->viewVehiculos->showCarDetails($vehiculo, $this->user);
+        return $this->viewMensaje->showMensaje("No existe un vehiculo con id = $id", "error", $this->user);
     }
 
-    function showVehiculosByModelo(){
+    function showVehiculosByModelo()
+    {
         if (!isset($_POST['select-modelos']))
-            $this->viewMensaje->showMensaje('No hay modelos seleccionados!', "error",$this->user);
-        else  {
+            $this->viewMensaje->showMensaje('No hay modelos seleccionados!', "error", $this->user);
+        else {
             $year = $_POST['select-modelos'];
             $vehiculos = $this->modelVehiculos->getCarsByYear($year);
-            if($vehiculos)
-                $this->viewVehiculos->showVehiculos($vehiculos,$year,$this->user);
-            else{
-                $this->viewMensaje->showMensaje('Modelo de auto inexistente!', "error",$this->user);
+            if ($vehiculos)
+                $this->viewVehiculos->showVehiculos($vehiculos, $year, $this->user);
+            else {
+                $this->viewMensaje->showMensaje('Modelo de auto inexistente!', "error", $this->user);
                 //header('Location:'.BASE_URL.'catalogo');
             }
-
         }
-
     }
 
-    function showFormAltaController(){
+    function showFormAltaController()
+    {
         $this->viewVehiculos->showFormAlta($this->user);
     }
 
-    function nuevoVehiculo(){
+    function nuevoVehiculo()
+    {
         // var_dump($_POST);
-         $marca = $_POST['marca'];
-         $modelo = $_POST['modelo'];
-         $matricula = $_POST['matricula'];
-         $precio = $_POST['precio'];
-         $imagen = $_POST['imagen'];
-         
-         $this->modelVehiculos->insertCar($marca,$modelo,$matricula,$precio,$imagen);
-         header('Location: ' . BASE_URL. 'catalogo');
- 
-         //$this->viewVehiculos->showError('Insertado con exito')
-     }
+        $marca = $_POST['marca'];
+        $modelo = $_POST['modelo'];
+        $matricula = $_POST['matricula'];
+        $precio = $_POST['precio'];
+        $imagen = $_POST['imagen'];
 
-     function eliminarVehiculo($id){
-        $vehiculo = $this->modelVehiculos->getCarById($id);
-        if ($vehiculo){
-            $this->modelVehiculos->deleteCarById($id);
-            header('Location: ' . BASE_URL. 'catalogo');
-        }
-        else    
-            $this->viewVehiculos->showError("No existe Vehiculo con id = $id");
+        $this->modelVehiculos->insertCar($marca, $modelo, $matricula, $precio, $imagen);
+        header('Location: ' . BASE_URL . 'catalogo');
+
+        //$this->viewVehiculos->showError('Insertado con exito')
     }
 
+    function eliminarVehiculo($id)
+    {
+        $vehiculo = $this->modelVehiculos->getCarById($id);
+        if ($vehiculo) {
+            $this->modelVehiculos->deleteCarById($id);
+            header('Location: ' . BASE_URL . 'catalogo');
+        } else
+            $this->viewMensaje->showMensaje("No existe Vehiculo con id = $id", 'error', $this->user);
+    }
+
+    function showFormActualizar($id)
+    {
+        $vehiculo = $this->modelVehiculos->getCarById($id);
+        if ($vehiculo)
+            $this->viewVehiculos->showFormUpdate($vehiculo, $this->user);
+        else
+            $this->viewMensaje->showMensaje("No existe vehiculo con id = $id", 'error', $this->user);
+    }
+
+    function actualizarVehiculo($id)
+    {
+        $vehiculo = $this->modelVehiculos->getCarById($id);
+        if ($vehiculo) {
+            $marca = $_POST['marca'];
+            $modelo = $_POST['modelo'];
+            $matricula = $_POST['matricula'];
+            $precio = $_POST['precio'];
+            $imagen = $_POST['imagen'];
+            $vehiculo = $this->modelVehiculos->updateCar($id,$marca, $modelo, $matricula, $precio, $imagen);
+            $this->viewVehiculos->showCarDetails($vehiculo,$this->user);
+            //var_dump($vehiculo);
+        } else
+            $this->viewMensaje->showMensaje("No existe vehiculo con id = $id", 'error', $this->user);
+    }
 }
