@@ -13,5 +13,9 @@
                                     echo 'Disponible'; ?>
             </li>
         </ul>
+        <?php if ($usuario) { ?>
+            <a href="actualizar/ <?php echo "$vehiculo->id" ?>">Actualizar</a>
+            <a href="eliminar/<?php echo "$vehiculo->id" ?>">Eliminar</a>
+        <?php } ?>
     </div>
 </section>

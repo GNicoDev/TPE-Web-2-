@@ -87,7 +87,12 @@ switch ($params[0]) {
             $controller->nuevoVehiculo();
             break;
         }
-        
+        case "eliminar": {
+            sessionAuthMiddleware($res);
+            $controller = new VehiculoControllers($res);
+            $controller->eliminarVehiculo($params[1]);
+            break;
+        }
     default: {
             header("HTTP/1.0 404 Not Found");
             break;

@@ -71,5 +71,14 @@ class VehiculoControllers{
          //$this->viewVehiculos->showError('Insertado con exito')
      }
 
+     function eliminarVehiculo($id){
+        $vehiculo = $this->modelVehiculos->getCarById($id);
+        if ($vehiculo){
+            $this->modelVehiculos->deleteCarById($id);
+            header('Location: ' . BASE_URL. 'catalogo');
+        }
+        else    
+            $this->viewVehiculos->showError("No existe Vehiculo con id = $id");
+    }
 
 }
