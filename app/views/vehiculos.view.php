@@ -27,13 +27,13 @@ class viewVehiculos
     function showFormAlta($user){
         $usuario = $user;
         require_once 'templates/layout/header.phtml';
-        require_once 'templates/form_alta.phtml';
+        require_once 'templates/form_alta_vehiculo.phtml';
     }
 
     function showFormUpdate($car,$user){
         $usuario=$user;
         $vehiculo=$car;
         require_once 'templates/layout/header.phtml';
-        require_once 'templates/form_update.phtml';
+        require_once 'templates/form_update_vehiculo.phtml';
     }
 }

@@ -1,0 +1,34 @@
+
+<section class="contenedorMain">
+        <div class="contactos">
+        <h2>Reservas </h2>
+        <span>
+        <h4>Listar reservas por vehiculo</h4>
+        <form action="reservasPorVehiculo" method="get">
+            Ingrese id del vehiculo<input type="number" step="1" name="idVehiculo" required>
+            <button id="btn-detallereserva" type="submit">Mostrar</button>
+        </form>
+        </span>
+        <br><br>
+        <table>
+                <thead>
+                    <tr>
+                        <td>Vehiculo</td>
+                        <td>Fecha Reserva</td>
+                        <td>Cantidad de dias</td>
+                        <td>Detalles</td>
+                    </tr>
+                </thead>
+                <?php foreach ($reservas as $reserva) { ?>
+                <tr>
+                    <td><?php echo $reserva->id_vehiculo ?></td>
+                    <td><?php echo $reserva->fecha_reserva ?></td>
+                    <td><?php echo $reserva->cant_dias ?></td>
+                    <td><a href="detallesReserva/<?php echo $reserva->id ?>">ver mas</a></td>
+                </tr>
+                <?php } ?>
+
+                
+            </table>
+        </div>
+    </section>

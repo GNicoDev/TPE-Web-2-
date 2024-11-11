@@ -1,8 +1,11 @@
 <?php
 include_once 'app/controllers/vehiculo.controller.php';
+include_once 'app/controllers/reserva.controller.php';
 include_once 'app/controllers/home.controller.php';
 include_once 'app/controllers/auth.controller.php';
+
 include_once 'app/libs/response.libs.php';
+
 include_once 'app/middlewares/seesion.auth.middleware.php';
 
 
@@ -104,6 +107,24 @@ switch ($params[0]) {
             sessionAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->actualizarVehiculo($params[1]);
+            break;
+        }
+        case "reservas": {
+            sessionAuthMiddleware($res);
+            $reservaController = new ReservaController($res);
+            $reservaController->showReservas($res);
+            break;
+        }
+        case "detallesReserva": {
+            sessionAuthMiddleware($res);
+            $reservaController = new ReservaController($res);
+            $reservaController->showDetalleReserva($params[1]);
+            break;
+        }
+        case "reservasPorVehiculo": {
+            sessionAuthMiddleware($res);
+            $reservaController = new ReservaController($res);
+            $reservaController->showReservasPorVehiculo();
             break;
         }
     default: {
