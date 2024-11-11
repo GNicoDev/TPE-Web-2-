@@ -2,7 +2,7 @@
     <h2>Formulario de actualizacion de Vehiculos</h2>
     <img src="<?php echo $vehiculo->imagen ?>" alt="" class="img-auto">
 
-    <form action="actualizar/<?php echo "$vehiculo->id" ?>" method="post">
+    <form action="actualizarVehiculo/<?php echo "$vehiculo->id" ?>" method="post">
         <div>
             <label>Marca: <input type="text" name="marca" value="<?php echo $vehiculo->marca ?>" required></label>
         </div>

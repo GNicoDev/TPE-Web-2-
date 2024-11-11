@@ -33,7 +33,7 @@ switch ($params[0]) {
             $vehiculoController->showCatalogo();
             break;
         }
-    case "detalles": {
+    case "detalleVehiculo": {
             sessionAuthMiddleware($res);
             $vehiculoController = new VehiculoControllers($res);
             $vehiculoController->showDetalles($params[1]);
@@ -81,13 +81,13 @@ switch ($params[0]) {
             $controller->showFormAltaController();
             break;
         }
-        case "insertar": {
+        case "insertarVehiculo": {
             sessionAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->nuevoVehiculo();
             break;
         }
-        case "eliminar": {
+        case "eliminarVehiculo": {
             sessionAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->eliminarVehiculo($params[1]);
@@ -100,7 +100,7 @@ switch ($params[0]) {
             $controller->showFormActualizar($params[1]);
             break;
         }
-        case "actualizar": {
+        case "actualizarVehiculo": {
             sessionAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->actualizarVehiculo($params[1]);
