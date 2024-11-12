@@ -8,4 +8,13 @@
             <li><b>ID del vehiculo:</b> <?php echo $reserva->id_vehiculo ?></li>
         </ul>
     </div>
+    <?php if ($usuario) { ?>
+            <div>
+            <button onclick="location.href='showFormActualizarReserva/<?php echo $reserva->id ?>'" >Actualizar</a>
+            </div>
+            <br>
+            <div>
+            <button onclick="location.href='eliminarReserva/<?php echo $reserva->id ?>'" >Eliminar</a>
+            </div>
+        <?php } ?>
 </section>

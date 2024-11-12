@@ -8,12 +8,15 @@
         </div>
         <br>
         <div>
-        <label>Modelo: </label> <select name="modelo">
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
+            <label>Modelo: </label>
+            <select name="modelo">
+                <?php for ($i = 2019; $i < 2024; $i++) {
+                    if ($vehiculo->modelo == $i) { ?>
+                        <option value="<?php echo "$i" ?>" selected> <?php echo "$i" ?> </option>
+                    <?php } else { ?>
+                        <option value="<?php echo "$i" ?>"> <?php echo "$i" ?> </option>
+                <?php }
+                } ?>
             </select>
         </div>
         <br>

@@ -76,10 +76,10 @@ class Reserva
         $query->execute([$fecha, $cantDias, $idVehiculo]);
     }
 
-    function updateCar($id, $fecha, $cantDias, $idVehiculo)
+    function updateReserva($id, $fecha, $cantDias, $idVehiculo)
     {
 
-        $query = $this->db->prepare("UPDATE reservas SET  fecha_reserva = ?, cant_dias = ?, id_vehiculo = ? WHERE vehiculos.id = ?");
+        $query = $this->db->prepare("UPDATE reservas SET  fecha_reserva = ?, cant_dias = ?, id_vehiculo = ? WHERE id = ?");
         $query->execute([$fecha, $cantDias, $idVehiculo, $id]);
         $reserva = $this->getReservaById($id);
         return $reserva;

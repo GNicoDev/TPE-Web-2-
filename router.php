@@ -78,7 +78,7 @@ switch ($params[0]) {
             $homeController->showContactosC();
             break;
         }
-        case "showFormAlta": {
+        case "showFormAltaVehiculo": {
             sessionAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->showFormAltaController();
@@ -96,7 +96,7 @@ switch ($params[0]) {
             $controller->eliminarVehiculo($params[1]);
             break;
         }
-        case "showFormActualizar": {
+        case "showFormActualizarVehiculo": {
             //var_dump($params);
             sessionAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
@@ -125,6 +125,37 @@ switch ($params[0]) {
             sessionAuthMiddleware($res);
             $reservaController = new ReservaController($res);
             $reservaController->showReservasPorVehiculo();
+            break;
+        }
+        case "showFormAltaReserva": {
+            sessionAuthMiddleware($res);
+            $controller = new ReservaController($res);
+            $controller->showFormAltaController();
+            break;
+        }
+        case "insertarReserva": {
+            sessionAuthMiddleware($res);
+            $controller = new ReservaController($res);
+            $controller->nuevaReserva();
+            break;
+        }
+        case "showFormActualizarReserva": {
+            //var_dump($params);
+            sessionAuthMiddleware($res);
+            $controller = new ReservaController($res);
+            $controller->showFormActualizar($params[1]);
+            break;
+        }
+        case "actualizarReserva": {
+            sessionAuthMiddleware($res);
+            $controller = new ReservaController($res);
+            $controller->actualizarReserva($params[1]);
+            break;
+        }
+        case "eliminarReserva": {
+            sessionAuthMiddleware($res);
+            $controller = new ReservaController($res);
+            $controller->eliminarReserva($params[1]);
             break;
         }
     default: {

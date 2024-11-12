@@ -104,7 +104,7 @@ class VehiculoControllers
             $precio = $_POST['precio'];
             $imagen = $_POST['imagen'];
             $vehiculo = $this->modelVehiculos->updateCar($id,$marca, $modelo, $matricula, $precio, $imagen);
-            $this->viewVehiculos->showCarDetails($vehiculo,$this->user);
+            header('Location: ' . BASE_URL . "detalleVehiculo/$vehiculo->id");
             //var_dump($vehiculo);
         } else
             $this->viewMensaje->showMensaje("No existe vehiculo con id = $id", 'error', $this->user);

@@ -21,10 +21,11 @@ class viewReserva
         }
     }
 
-    function showFormAlta($user){
+    function showFormAltaReserva($cars, $user){
         $usuario = $user;
+        $vehiculos = $cars;
         require_once 'templates/layout/header.phtml';
-        require_once 'templates/form_alta.phtml';
+        require_once 'templates/form_alta_reserva.phtml';
     }
 
     function showFormUpdate($book,$user){
@@ -39,5 +40,13 @@ class viewReserva
         $vehiculo = $car;
         require_once 'templates/layout/header.phtml';
         require_once 'templates/reservasPorVehiculo.phtml';
+    }
+
+    function showFormUpdateReserva($book,$cars,$user){
+        $usuario=$user;
+        $reserva=$book;
+        $vehiculos = $cars;
+        require_once 'templates/layout/header.phtml';
+        require_once 'templates/form_update_reserva.phtml';
     }
 }

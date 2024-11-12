@@ -1,0 +1,25 @@
+<section class="contenedorMain">
+    <h2>Formulario de alta Vehiculos</h2>
+    <form action="insertarReserva" method="post">
+        <div>
+            <label>Fecha reserva: <input type="date" name="fecha" required></label>
+        </div>
+        <br>
+        <div>
+            <label>Cantidad dias: <input type="number" step="1" name="cantDias" required></label>
+        </div>
+        <br>
+        <div>
+            <label>Vehiculo:</label>
+            <select name="select-reserva">
+                <?php foreach ($vehiculos as $vehiculo){ ?>
+                    <option value="<?php echo $vehiculo->id ?>"><?php echo "$vehiculo->marca / $vehiculo->matricula" ?></option>
+                    <?php } ?>
+             </select>
+        </div>
+        <br>
+        <div>
+            <button type="submit">Agregar</button>
+        </div>
+    </form>
+</section>
