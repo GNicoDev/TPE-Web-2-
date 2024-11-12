@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2024 a las 18:03:40
+-- Tiempo de generación: 12-11-2024 a las 13:42:59
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,7 +40,10 @@ CREATE TABLE `reservas` (
 
 INSERT INTO `reservas` (`id`, `fecha_reserva`, `cant_dias`, `id_vehiculo`) VALUES
 (1, '2024-10-15', 10, 1),
-(2, '2024-10-25', 13, 3);
+(2, '2024-10-25', 13, 3),
+(3, '2024-03-03', 10, 12),
+(5, '2024-11-13', 11, 1),
+(6, '2024-11-27', 10, 12);
 
 -- --------------------------------------------------------
 
@@ -79,7 +82,6 @@ CREATE TABLE `vehiculos` (
   `modelo` int(11) NOT NULL,
   `matricula` varchar(10) NOT NULL,
   `precio_dia` decimal(10,0) NOT NULL,
-  `reservado` tinyint(1) NOT NULL,
   `imagen` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -87,14 +89,14 @@ CREATE TABLE `vehiculos` (
 -- Volcado de datos para la tabla `vehiculos`
 --
 
-INSERT INTO `vehiculos` (`id`, `marca`, `modelo`, `matricula`, `precio_dia`, `reservado`, `imagen`) VALUES
-(1, 'FERRARI', 2019, 'AD456ZQ', 125, 1, 'https://wallup.net/wp-content/uploads/2019/09/586471-2013-ferrari-laferrari-supercar.jpg'),
-(3, 'TESLA', 2023, 'SG754RE', 95, 1, 'https://st.automobilemag.com/uploads/sites/11/2017/11/2020-Tesla-Roadster-Above.jpg'),
-(8, 'PORSCHE', 2020, 'TR487UF', 145, 0, 'https://th.bing.com/th/id/OIP.Zt5SDgQ3g_akLbH4lVGz6gAAAA?rs=1&pid=ImgDetMain'),
-(9, 'LAMBORGHINI', 2023, 'TV739XL', 190, 0, 'https://th.bing.com/th/id/OIP.JT5eTZv0R4gKfRG3RaSOfwAAAA?rs=1&pid=ImgDetMain'),
-(11, 'ASTON MARTIN', 2021, 'ER391DS', 110, 0, 'https://th.bing.com/th/id/OIP.6cQfNk5wvIYZCm5N6nYqAQAAAA?rs=1&pid=ImgDetMain'),
-(12, 'ROLLS-ROYCE', 2020, 'DH487MZ', 158, 0, 'https://static1.hotcarsimages.com/wordpress/wp-content/uploads/2022/06/2022-Rolls-Royce-Boat-Tail.jpg'),
-(13, 'MASERATI', 2023, 'GA741FC', 220, 0, 'https://th.bing.com/th/id/OIP.tBcZ4cF8gTq5QLTvOsmRygAAAA?rs=1&pid=ImgDetMain');
+INSERT INTO `vehiculos` (`id`, `marca`, `modelo`, `matricula`, `precio_dia`, `imagen`) VALUES
+(1, 'FERRARI', 2019, 'AD456ZQ', 125, 'https://thrillofdriving.net/wp-content/uploads/2022/09/sf90-red.jpg'),
+(3, 'TESLA', 2020, 'SG754RE', 100, 'https://st.automobilemag.com/uploads/sites/11/2017/11/2020-Tesla-Roadster-Above.jpg'),
+(8, 'PORSCHE', 2020, 'TR487UF', 145, 'https://th.bing.com/th/id/OIP.Zt5SDgQ3g_akLbH4lVGz6gAAAA?rs=1&pid=ImgDetMain'),
+(9, 'LAMBORGHINI', 2023, 'TV739XL', 190, 'https://th.bing.com/th/id/OIP.JT5eTZv0R4gKfRG3RaSOfwAAAA?rs=1&pid=ImgDetMain'),
+(11, 'ASTON MARTIN', 2021, 'ER391DS', 110, 'https://th.bing.com/th/id/OIP.6cQfNk5wvIYZCm5N6nYqAQAAAA?rs=1&pid=ImgDetMain'),
+(12, 'ROLLS-ROYCE', 2020, 'DH487MZ', 158, 'https://static1.hotcarsimages.com/wordpress/wp-content/uploads/2022/06/2022-Rolls-Royce-Boat-Tail.jpg'),
+(13, 'MASERATI', 2023, 'GA741FC', 220, 'https://th.bing.com/th/id/OIP.tBcZ4cF8gTq5QLTvOsmRygAAAA?rs=1&pid=ImgDetMain');
 
 --
 -- Índices para tablas volcadas
@@ -128,7 +130,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
