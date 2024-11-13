@@ -15,9 +15,10 @@ class viewVehiculos
     }
 
     //Muestra el detalle del vehiculo seleccionado
-    function showCarDetails($vehiculo, $user)
+    function showCarDetails($vehiculo, $books, $user)
     { {
         $usuario = $user;
+        $reservas = $books;
         require_once 'templates/layout/header.phtml';
         require_once 'templates/detallesVehiculos.phtml';
          require_once 'templates/layout/footer.phtml';

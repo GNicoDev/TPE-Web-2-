@@ -1,5 +1,6 @@
 <?php
-include_once 'app/Models/vehiculos.model.php';
+include_once 'app/models/vehiculos.model.php';
+include_once 'app/models/reserva.model.php';
 include_once 'app/views/vehiculos.view.php';
 include_once 'app/views/mensaje.view.php';
 
@@ -7,6 +8,7 @@ class VehiculoControllers
 {
 
     private $modelVehiculos;
+    private $modelReservas;
     private $viewVehiculos;
     private $viewMensaje;
     private $user = null;
@@ -15,6 +17,7 @@ class VehiculoControllers
     function __construct($res)
     {
         $this->modelVehiculos = new Vehiculos();
+        $this->modelReservas = new Reserva();
         $this->viewVehiculos = new viewVehiculos();
         $this->viewMensaje = new Mensaje();
         $this->user = $res->user;
@@ -34,8 +37,9 @@ class VehiculoControllers
     {
         //echo "$id"; 
         $vehiculo = $this->modelVehiculos->getCarById($id);
+        $reservas = $this->modelReservas->getReservasByCar($id);
         if ($vehiculo)
-            return $this->viewVehiculos->showCarDetails($vehiculo, $this->user);
+            return $this->viewVehiculos->showCarDetails($vehiculo, $reservas, $this->user);
         return $this->viewMensaje->showMensaje("No existe un vehiculo con id = $id", "error", $this->user);
     }
 

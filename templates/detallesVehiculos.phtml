@@ -1,16 +1,50 @@
 <section class="contenedorMain">
     <h2>Detalles</h2>
     <div class="catalogo">
-        <ul>
+        <ul>            
             <img src="<?php echo $vehiculo->imagen ?>" alt="" class="img-auto">
+            <?php if ($usuario) { ?>
+                <li><b>ID:</b> <?php echo $vehiculo->id ?> </li>
+            <?php } ?>
             <li><b>Marca:</b> <?php echo $vehiculo->marca ?> </li>
             <li><b>Modelo:</b> <?php echo $vehiculo->modelo ?></li>
             <li><b>Matricula:</b> <?php echo $vehiculo->matricula ?></li>
             <li><b>Precio por dia:</b> $<?php echo $vehiculo->precio_dia ?></li>
         </ul>
-        <?php if ($usuario) { ?>
-            <a href="showFormActualizarVehiculo/<?php echo "$vehiculo->id" ?>">Actualizar</a>
-            <a href="eliminar/<?php echo "$vehiculo->id" ?>">Eliminar</a>
+        <?php if ($reservas) { ?>
+            <div class="contactos">
+                <h3>Reservas</h3><br>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Fecha Reserva</td>
+                            <td>Cantidad de dias</td>
+                            <td>Total a Pagar</td>
+                            <td>ID reserva</td>
+                        </tr>
+                    </thead>
+                    <?php foreach ($reservas as $reserva) { ?>
+                        <tr>
+                            <td><?php echo $reserva->fecha_reserva ?></td>
+                            <td><?php echo $reserva->cant_dias ?></td>
+                            <td>$<?php echo $reserva->cant_dias * $vehiculo->precio_dia ?></td>
+                            <td><?php echo $reserva->id ?></td>
+                        </tr>
+                    <?php } ?>
+
+
+                </table>
+            </div>
         <?php } ?>
+        <div>
+            <br><br>
+            <?php if ($usuario) { ?>
+                <a href="showFormActualizarVehiculo/<?php echo "$vehiculo->id" ?>">Actualizar</a>
+                <br><br><br>
+                <a href="eliminarVehiculo/<?php echo "$vehiculo->id" ?>">Eliminar</a>
+            <?php } ?>
+        </div>
+
     </div>
+
 </section>

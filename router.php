@@ -7,6 +7,8 @@ include_once 'app/controllers/auth.controller.php';
 include_once 'app/libs/response.libs.php';
 
 include_once 'app/middlewares/seesion.auth.middleware.php';
+include_once 'app/middlewares/verify.auth.middleware.php';
+
 
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -80,18 +82,21 @@ switch ($params[0]) {
         }
         case "showFormAltaVehiculo": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->showFormAltaController();
             break;
         }
         case "insertarVehiculo": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->nuevoVehiculo();
             break;
         }
         case "eliminarVehiculo": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->eliminarVehiculo($params[1]);
             break;
@@ -99,12 +104,14 @@ switch ($params[0]) {
         case "showFormActualizarVehiculo": {
             //var_dump($params);
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->showFormActualizar($params[1]);
             break;
         }
         case "actualizarVehiculo": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new VehiculoControllers($res);
             $controller->actualizarVehiculo($params[1]);
             break;
@@ -129,12 +136,14 @@ switch ($params[0]) {
         }
         case "showFormAltaReserva": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new ReservaController($res);
             $controller->showFormAltaController();
             break;
         }
         case "insertarReserva": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new ReservaController($res);
             $controller->nuevaReserva();
             break;
@@ -142,18 +151,21 @@ switch ($params[0]) {
         case "showFormActualizarReserva": {
             //var_dump($params);
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new ReservaController($res);
             $controller->showFormActualizar($params[1]);
             break;
         }
         case "actualizarReserva": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new ReservaController($res);
             $controller->actualizarReserva($params[1]);
             break;
         }
         case "eliminarReserva": {
             sessionAuthMiddleware($res);
+            verifyAuthMiddleware($res);
             $controller = new ReservaController($res);
             $controller->eliminarReserva($params[1]);
             break;
