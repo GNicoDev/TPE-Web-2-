@@ -14,7 +14,7 @@ class viewVehiculos
         require_once 'templates/layout/footer.phtml';
     }
 
-    //Muestra el detalle del vehiculo seleccionado
+    //Muestra el detalle del vehiculo seleccionado junto a sus reservas
     function showCarDetails($vehiculo, $books, $user)
     { {
         $usuario = $user;
@@ -25,6 +25,7 @@ class viewVehiculos
         }
     }
 
+    
     function showFormAlta($user){
         $usuario = $user;
         require_once 'templates/layout/header.phtml';

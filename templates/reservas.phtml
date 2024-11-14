@@ -4,18 +4,22 @@
         <h2>Reservas </h2>
         <table>
                 <thead>
-                    <tr>
-                        <td>Vehiculo</td>
+                    <tr><?php if ($usuario){ ?>
+                        <td>ID</td>
+                        <?php } ?>
                         <td>Fecha Reserva</td>
                         <td>Cantidad de dias</td>
+                        <td>Vehiculo</td>
                         <td>Detalles</td>
                     </tr>
                 </thead>
                 <?php foreach ($reservas as $reserva) { ?>
-                <tr>
-                    <td><?php echo $reserva->id_vehiculo ?></td>
+                <tr><?php if ($usuario){ ?>
+                        <td><?php echo $reserva->id ?></td>
+                        <?php } ?>
                     <td><?php echo $reserva->fecha_reserva ?></td>
                     <td><?php echo $reserva->cant_dias ?></td>
+                    <td><?php echo $reserva->id_vehiculo ?></td>
                     <td><a href="detallesReserva/<?php echo $reserva->id ?>">ver mas</a></td>
                 </tr>
                 <?php } ?>

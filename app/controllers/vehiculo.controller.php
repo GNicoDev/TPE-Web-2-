@@ -67,16 +67,18 @@ class VehiculoControllers
     function nuevoVehiculo()
     {
         // var_dump($_POST);
-        $marca = $_POST['marca'];
-        $modelo = $_POST['modelo'];
-        $matricula = $_POST['matricula'];
-        $precio = $_POST['precio'];
-        $imagen = $_POST['imagen'];
-
-        $this->modelVehiculos->insertCar($marca, $modelo, $matricula, $precio, $imagen);
-        header('Location: ' . BASE_URL . 'catalogo');
-
-        //$this->viewVehiculos->showError('Insertado con exito')
+        if (empty($_POST['marca']) || empty($_POST['modelo']) || empty($_POST['matricula']) || empty($_POST['precio']) || empty($_POST['imagen'])) {
+            $this->viewMensaje->showMensaje("Faltaron completar campos", 'mensaje', $this->user);
+        }
+        else {
+            $marca = $_POST['marca'];
+            $modelo = $_POST['modelo'];
+            $matricula = $_POST['matricula'];
+            $precio = $_POST['precio'];
+            $imagen = $_POST['imagen']; 
+            $this->modelVehiculos->insertCar($marca, $modelo, $matricula, $precio, $imagen);
+            header('Location: ' . BASE_URL . 'catalogo');
+        }
     }
 
     function eliminarVehiculo($id)
@@ -102,14 +104,18 @@ class VehiculoControllers
     {
         $vehiculo = $this->modelVehiculos->getCarById($id);
         if ($vehiculo) {
-            $marca = $_POST['marca'];
-            $modelo = $_POST['modelo'];
-            $matricula = $_POST['matricula'];
-            $precio = $_POST['precio'];
-            $imagen = $_POST['imagen'];
-            $vehiculo = $this->modelVehiculos->updateCar($id,$marca, $modelo, $matricula, $precio, $imagen);
-            header('Location: ' . BASE_URL . "detalleVehiculo/$vehiculo->id");
-            //var_dump($vehiculo);
+            if (empty($_POST['marca']) || empty($_POST['modelo']) || empty($_POST['matricula']) || empty($_POST['precio']) || empty($_POST['imagen'])) {
+                $this->viewMensaje->showMensaje("Faltaron completar campos", 'mensaje', $this->user);
+            }
+            else {
+                $marca = $_POST['marca'];
+                $modelo = $_POST['modelo'];
+                $matricula = $_POST['matricula'];
+                $precio = $_POST['precio'];
+                $imagen = $_POST['imagen'];            
+                $vehiculo = $this->modelVehiculos->updateCar($id, $marca, $modelo, $matricula, $precio, $imagen);
+                header('Location: ' . BASE_URL . "detalleVehiculo/$vehiculo->id");
+            }
         } else
             $this->viewMensaje->showMensaje("No existe vehiculo con id = $id", 'error', $this->user);
     }

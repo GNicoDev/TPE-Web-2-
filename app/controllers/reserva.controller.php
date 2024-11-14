@@ -57,18 +57,20 @@ class ReservaController
 
     function nuevaReserva()
     {
-        $fecha = $_POST['fecha'];
-        $cantDias = $_POST['cantDias'];
-        $idVehiculo = $_POST['select-reserva'];
-
-        $vehiculo = $this->vehiculoModel->getCarById($idVehiculo);
-        if ($vehiculo) {
-            $this->reservaModel->insertReserva($fecha, $cantDias, $idVehiculo);
+        if (empty($_POST['fecha']) || empty($_POST['cantDias']) || empty($_POST['select-reserva'])) {
+            $this->viewMensaje->showMensaje("Faltaron completar campos", 'mensaje', $this->user);
+        } else {
+            $fecha = $_POST['fecha'];
+            $cantDias = $_POST['cantDias'];
+            $idVehiculo = $_POST['select-reserva'];
+            $vehiculo = $this->vehiculoModel->getCarById($idVehiculo);
+            if ($vehiculo) {
+                $this->reservaModel->insertReserva($fecha, $cantDias, $idVehiculo);
+            } else {
+                $this->viewMensaje->showMensaje('No se ha encontrado un vehiculo con ese ID', 'error', $this->user);
+            }
+            header('Location: ' . BASE_URL . 'reservas');
         }
-        else{
-            $this->viewMensaje->showMensaje('No se ha encontrado un vehiculo con ese ID','error',$this->user);
-        }
-        header('Location: ' . BASE_URL . 'reservas');
     }
 
     function showFormActualizar($id)
@@ -85,11 +87,15 @@ class ReservaController
     {
         $reserva = $this->reservaModel->getReservaById($id);
         if ($reserva) {
-            $fecha = $_POST['fecha'];
-            $cantDias = $_POST['cantDias'];
-            $idVehiculo = $_POST['select-reserva'];
-            $this->reservaModel->updateReserva($reserva->id, $fecha, $cantDias, $idVehiculo);
-            header('Location: ' . BASE_URL . "detallesReserva/$reserva->id");
+            if (!empty($_POST['fecha']) && !empty($_POST['cantDias']) && !empty($_POST['select-reserva'])) {
+                $fecha = $_POST['fecha'];
+                $cantDias = $_POST['cantDias'];
+                $idVehiculo = $_POST['select-reserva'];
+                $this->reservaModel->updateReserva($reserva->id, $fecha, $cantDias, $idVehiculo);
+                header('Location: ' . BASE_URL . "detallesReserva/$reserva->id");
+            }
+            else
+                 $this->viewMensaje->showMensaje("Faltaron completar campos", 'mensaje', $this->user);
         } else
             $this->viewMensaje->showMensaje("No existe reserva con id = $id", 'error', $this->user);
     }
