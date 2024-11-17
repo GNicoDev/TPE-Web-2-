@@ -11,8 +11,8 @@ Esta aplicación web permite a los usuarios alquilar vehículos de manera sencil
 
 La base de datos del proyecto esta compuesta por tres tablas principales
 * **Usuarios**: contiene la informacion basica de los usuarios como nombre, email, password, telefono y un campo "tipo" para distinguir usuarios comunes de administradores. Por el momento solo exite un solo usuario de tipo administrador para loguearse y manipular la base de datos: **email**: `web@admin.com` --- **password**: `admin`
-* **Vehiculos**: almacena detalles de los vehículos disponibles para alquiler, como marca, modelo, matricula, precio por dia y disponibilidad.
-* **Reservas**: registra las reservas realizadas por los usuarios, incluyendo fechas de inicio, cantidad de dias, y los id's de usuario y vehiculo (llaves foraneas) que pertenecen a la reserva.
+* **Vehiculos**: almacena detalles de los vehículos disponibles para alquiler, como marca, modelo, matricula y precio por dia.
+* **Reservas**: registra las reservas realizadas, incluyendo fechas de inicio, cantidad de dias, y el id del vehiculo (llave foranea) que pertenecen a la reserva.
 
 Para cargar el sitio en un servidor web Apache, deberas tener instalado XAMPP (Puedes descargarlo [aquí](https://www.apachefriends.org/es/download.html)). Una vez instalado, deberas iniciarlo y correr el servidor Apache y Mysql. Luego tendras que importar la base de datos MYSQL que se encuentra en la carpeta Database del proyecto (alquilerautos.sql) [aqui](http://localhost/phpmyadmin/index.php).
 El paso siguiente sera clonar el proyecto en la carpeta 'htdocs' del directorio de XAMMP y ejecutarlo desde el navegador.
