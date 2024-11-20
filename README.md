@@ -7,8 +7,8 @@ ALVAREZ, GUILLERMO NICOLAS
 ## Breve descripción:
 Esta aplicación web permite a los usuarios alquilar vehículos de manera sencilla. El sitio web es de acceso publico con lo cual todos pueden navegar en el y solo usuarios administradores pueden loguearse para el manejo de la base de datos (CRUD). La intension, a medida que avance el proyecto, es que usuarios comunes tambien puedan loguearse con la posibilidad de alquilar vehiculos.
 
-### Enfoque de Renderizado del Lado del Servidor (SSR):
-Este proyecto utiliza un enfoque de renderizado del lado del servidor (SSR). El SSR permite que las páginas web se rendericen en el servidor antes de enviarlas al cliente, lo que resulta en tiempos de carga más rápidos y una mejor optimización para motores de búsqueda (SEO).
+#### Enfoque de Renderizado del Lado del Servidor (SSR):
+Este proyecto utiliza un enfoque de renderizado del lado del servidor. El SSR permite que las páginas web se rendericen en el servidor antes de enviarlas al cliente, lo que resulta en tiempos de carga más rápidos y una mejor optimización para motores de búsqueda (SEO).
 
 ## Estructura de la DB y como cargarla
 
